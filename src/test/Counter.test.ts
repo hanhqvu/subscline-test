@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 test("should render correctly", () => {
-  expect(screen.getByText(/count/)).toBeInTheDocument();
+  expect(screen.getByText(/count is/i)).toBeInTheDocument();
   expect(screen.getByText(/click edit/i)).toBeInTheDocument();
 });
 
