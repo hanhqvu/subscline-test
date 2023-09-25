@@ -18,24 +18,24 @@ test('should render correctly', () => {
 test('should be able to increment', async () => {
     await user.click(screen.getByText(/increment/i));
 
-    expect(screen.getByText(/count/).innerHTML).toBe('count is 1');
+    expect(screen.getByText(/count/i).innerHTML).toBe('Count is 1');
 })
 
 test('should be able to decrement', async () => {
     await user.click(screen.getByText(/decrement/i));
 
-    expect(screen.getByText(/count/).innerHTML).toBe('count is -1');
+    expect(screen.getByText(/count/i).innerHTML).toBe('Count is -1');
 })
 
 test('should be able to reset', async () => {
     await user.click(screen.getByText(/increment/i));
     await user.click(screen.getByText(/increment/i));
 
-    expect(screen.getByText(/count/).innerHTML).toBe('count is 2');
+    expect(screen.getByText(/count/i).innerHTML).toBe('Count is 2');
 
     await user.click(screen.getByText(/reset/i));
 
-    expect(screen.getByText(/count/).innerHTML).toBe('count is 0');
+    expect(screen.getByText(/count/i).innerHTML).toBe('Count is 0');
 })
 
 test('should be able to edit title', async () => {

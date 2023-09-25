@@ -11,7 +11,7 @@ beforeEach(() => {
 })
 
 test('should render correctly', () => {
-    expect(screen.getByText(/count/)).toBeInTheDocument();
+    expect(screen.getByText(/count is/i)).toBeInTheDocument();
     expect(screen.getByText(/add counter/i)).toBeInTheDocument();    
 })
 
@@ -19,15 +19,15 @@ describe('should handle adding and removing counter', () => {
     test('should be able to add counter', async () => {
         await user.click(screen.getByText(/add counter/i));
     
-        expect(screen.getAllByText(/count is/).length).toBe(2);
+        expect(screen.getAllByText(/count is/i).length).toBe(2);
     })
     
     test('should be able to remove counter', async () => {
         await user.click(screen.getByText(/add counter/i));
-        expect(screen.getAllByText(/count is/).length).toBe(2);
+        expect(screen.getAllByText(/count is/i).length).toBe(2);
     
         await user.click(screen.getAllByText(/remove/i)[0]);
-        expect(screen.getAllByText(/count is/).length).toBe(1);
+        expect(screen.getAllByText(/count is/i).length).toBe(1);
     })
 })
 
