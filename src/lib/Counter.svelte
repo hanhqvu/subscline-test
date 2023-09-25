@@ -37,10 +37,12 @@
     Edit
   {/if}
 </button>
-<span>count is {count}</span>
+<slot />
+
 <button on:click={increment}>
   Increment
 </button>
+<span>Count is {count}</span>
 <button on:click={decrement}>
   Decrement
 </button>

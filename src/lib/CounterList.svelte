@@ -16,14 +16,11 @@
 
 
 <div>
-    <ul>
     {#each counters as counter (counter.id)}
-        <li>
-            <Counter bind:count={counter.count}/>
+        <Counter bind:count={counter.count}>
             <button on:click={() => removeCounterWithId(counter.id)}>Remove</button>
-        </li>
+        </Counter>
     {/each}
-    </ul>
     <button on:click={addCounter}>Add Counter</button>
     <span>The sum is {sum}</span>
 </div>
