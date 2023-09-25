@@ -20,7 +20,7 @@
     }
 </script>
 
-<div class='my-2 lg:m-5 items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-4xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 p-2'>
+<div class='my-2 lg:m-5 items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-4x dark:border-gray-700 dark:bg-gray-800 p-2'>
     <div>
         {#if editing}
           <input
@@ -42,8 +42,8 @@
         <slot />
     </div>
     <div class='p-2'>
-      <button on:click={increment}> Increment </button>
       <span>Count is {count}</span>
+      <button on:click={increment}> Increment </button>  
       <button on:click={decrement}> Decrement </button>
       <button on:click={reset}> Reset </button>
     </div>
