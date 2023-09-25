@@ -1,7 +1,7 @@
 <script lang="ts">
   let editing = false;
   let title = '';
-  let count = 0;
+  export let count: number;
 
   function toggleEdit() {
     editing =!editing;
