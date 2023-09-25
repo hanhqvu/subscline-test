@@ -1,10 +1,26 @@
 <script lang="ts">
-  let count: number = 0
-  const increment = () => {
-    count += 1
+  let count = 0;
+
+  function increment() {
+    count += 1;
+  }
+
+  function decrement() {
+    count -= 1;
+  }
+
+  function reset() {
+    count = 0;
   }
 </script>
 
+<span>count is {count}</span>
 <button on:click={increment}>
-  count is {count}
+  Increment
+</button>
+<button on:click={decrement}>
+  Decrement
+</button>
+<button on:click={reset}>
+  Reset
 </button>
