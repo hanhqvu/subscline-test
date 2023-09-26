@@ -8,5 +8,4 @@
   <div>
     <CounterList />
   </div>
-
 </main>
