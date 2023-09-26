@@ -52,3 +52,11 @@ test("should be able to edit title", async () => {
 
   expect(screen.getByText("Another Title")).toBeInTheDocument();
 });
+
+test('should handle cancel edit', async () => {
+  await user.click(screen.getByText("Edit"));
+  await user.type(screen.getByPlaceholderText("Title"), "New Title");
+  await user.click(screen.getByText("Cancel"));
+
+  expect(screen.queryByText("New Title")).not.toBeInTheDocument();
+})
