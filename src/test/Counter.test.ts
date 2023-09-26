@@ -60,3 +60,13 @@ test('should handle cancel edit', async () => {
 
   expect(screen.queryByText("New Title")).not.toBeInTheDocument();
 })
+
+test('should handle keydown', async () => {
+  await user.click(screen.getByText("Edit"));
+  await user.type(screen.getByPlaceholderText("Title"), "New Title");
+  await user.keyboard('{Enter}');
+
+  screen.debug();
+
+  expect(screen.getByText("New Title")).toBeInTheDocument();
+})
