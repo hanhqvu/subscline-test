@@ -3,6 +3,13 @@
     let title = "";
     export let count: number;
 
+    function handleKeyDown(e: KeyboardEvent) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            toggleEdit();
+        }
+    }
+
     function toggleEdit() {
         editing = !editing;
     }
@@ -33,6 +40,7 @@
               type="text"
               placeholder="Title"
               on:blur={toggleEdit}
+              on:keydown={handleKeyDown}
           />
         {:else}
           <span>{title ? title : "Click edit to add title"}</span>
