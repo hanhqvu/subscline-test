@@ -7,6 +7,11 @@
         editing = !editing;
     }
 
+    function cancelEdit() {
+        title = '';
+        toggleEdit()
+    }
+
     function increment() {
         count += 1;
     }
@@ -32,7 +37,7 @@
         {:else}
           <span>{title ? title : "Click edit to add title"}</span>
         {/if}
-        <button on:click={toggleEdit}>
+        <button on:click={cancelEdit}>
           {#if editing}
               Cancel
           {:else}
