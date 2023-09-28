@@ -7,7 +7,7 @@ import Counter from '../lib/Counter.svelte';
 const user = userEvent.setup();
 
 beforeEach(() => {
-  render(Counter, { count: 0 });
+  render(Counter, { title: '', count: 0 });
 });
 
 test('should render correctly', () => {

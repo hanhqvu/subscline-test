@@ -1,6 +1,6 @@
 <script lang="ts">
   let editing = false;
-  let title = '';
+  export let title: string;
   export let count: number;
 
   function handleKeyDown(e: KeyboardEvent) {
