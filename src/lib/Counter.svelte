@@ -2,11 +2,12 @@
   export let title = '';
   export let count: number;
   let editing = false;
+  let titleInput: HTMLInputElement;
 
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      toggleEdit();
+      titleInput.blur();
     }
   }
 
@@ -39,6 +40,7 @@
   <div>
     {#if editing}
       <input
+        bind:this={titleInput}
         bind:value={title}
         type="text"
         placeholder="Title"
