@@ -24,6 +24,7 @@
   }
 
   function decrement() {
+    if (count === 0) return;
     count -= 1;
   }
 
