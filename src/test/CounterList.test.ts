@@ -74,3 +74,58 @@ describe('should handle sum', () => {
     expect(screen.getByText('The sum is 0')).toBeInTheDocument();
   });
 });
+
+describe('should handle titles correctly', () => {
+  test('should change when 1 title changes', async () => {
+    await user.click(screen.getByText('Edit'));
+    await user.type(screen.getByPlaceholderText('Title'), 'New Title');
+    await user.click(screen.getByText(/reset/i));
+
+    expect(screen.getAllByText(/New Title/).length).toBe(2);
+
+    await user.click(screen.getByText('Edit'));
+    await user.clear(screen.getByPlaceholderText('Title'));
+    await user.click(screen.getByText(/reset/i));
+    expect(screen.queryByText(/New Title/)).not.toBeInTheDocument();
+  });
+
+  test('should update when multiple titles changes', async () => {
+    await user.click(screen.getByText(/add counter/i));
+
+    await user.click(screen.getAllByText('Edit')[0]);
+    await user.type(screen.getByPlaceholderText('Title'), 'New Title');
+    await user.click(screen.getAllByText(/reset/i)[0]);
+
+    await user.click(screen.getAllByText('Edit')[1]);
+    await user.type(screen.getByPlaceholderText('Title'), 'Another Title');
+    await user.click(screen.getAllByText(/reset/i)[1]);
+
+    expect(screen.getAllByText(/New Title/).length).toBe(2);
+    expect(screen.getAllByText(/Another Title/).length).toBe(2);
+    expect(screen.getByText(/New Title,Another Title/)).toBeInTheDocument();
+  });
+
+  test('should update when adding/removing counters', async () => {
+    await user.click(screen.getByText(/add counter/i));
+    await user.click(screen.getByText(/add counter/i));
+
+    await user.click(screen.getAllByText('Edit')[0]);
+    await user.type(screen.getByPlaceholderText('Title'), 'Title 1');
+    await user.click(screen.getAllByText(/reset/i)[0]);
+
+    await user.click(screen.getAllByText('Edit')[2]);
+    await user.type(screen.getByPlaceholderText('Title'), 'Title 3');
+    await user.click(screen.getAllByText(/reset/i)[2]);
+
+    expect(screen.getByText(/Title 1,"",Title 3/)).toBeInTheDocument();
+
+    await user.click(screen.getByText(/add counter/i));
+    expect(screen.getByText(/Title 1,"",Title 3,""/)).toBeInTheDocument();
+
+    await user.click(screen.getAllByText(/remove/i)[2]);
+    expect(screen.getByText(/Title 1,"",""/)).toBeInTheDocument();
+
+    await user.click(screen.getAllByText(/remove/i)[0]);
+    expect(screen.getByText(/,/)).toBeInTheDocument();
+  });
+});
