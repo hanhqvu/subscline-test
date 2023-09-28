@@ -47,20 +47,19 @@ h1 {
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  @apply p-2 md:p-4;
 }
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  @apply text-sm md:text-base px-1 py-2 md:px-2 md:py-4;
 }
 button:hover {
   border-color: #646cff;
