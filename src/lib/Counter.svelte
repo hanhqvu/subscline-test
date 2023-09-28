@@ -1,22 +1,18 @@
 <script lang="ts">
-  let editing = false;
   export let title: string;
   export let count: number;
+  let editing = false;
+  let titleInput: HTMLInputElement;
 
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      toggleEdit();
+      titleInput.blur();
     }
   }
 
   function toggleEdit() {
     editing = !editing;
-  }
-
-  function cancelEdit() {
-    title = '';
-    toggleEdit();
   }
 
   function increment() {
@@ -39,6 +35,7 @@
   <div>
     {#if editing}
       <input
+        bind:this={titleInput}
         bind:value={title}
         type="text"
         placeholder="Title"
@@ -48,7 +45,7 @@
     {:else}
       <span>{title ? title : 'Click edit to add title'}</span>
     {/if}
-    <button on:click={cancelEdit}>
+    <button on:click={toggleEdit}>
       {#if editing}
         Cancel
       {:else}
