@@ -1,7 +1,7 @@
 <script lang="ts">
-  let editing = false;
-  let title = '';
+  export let title = '';
   export let count: number;
+  let editing = false;
 
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'Enter') {
@@ -24,6 +24,7 @@
   }
 
   function decrement() {
+    if (count === 0) return;
     count -= 1;
   }
 
