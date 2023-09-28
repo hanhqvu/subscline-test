@@ -22,9 +22,17 @@ test('should be able to increment', async () => {
 });
 
 test('should be able to decrement', async () => {
+  await user.click(screen.getByText(/increment/i));
   await user.click(screen.getByText(/decrement/i));
 
-  expect(screen.getByText(/count/i).innerHTML).toBe('Count is -1');
+  expect(screen.getByText(/count/i).innerHTML).toBe('Count is 0');
+});
+
+test('should not be able to show negative number', async () => {
+  await user.click(screen.getByText(/decrement/i));
+  await user.click(screen.getByText(/decrement/i));
+
+  expect(screen.getByText(/count/i).innerHTML).toBe('Count is 0');
 });
 
 test('should be able to reset', async () => {

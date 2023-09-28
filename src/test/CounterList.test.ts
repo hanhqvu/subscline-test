@@ -49,10 +49,16 @@ describe('should handle sum', () => {
 
     await user.click(screen.getAllByText(/increment/i)[0]);
     await user.click(screen.getAllByText(/decrement/i)[1]);
-    expect(screen.getByText('The sum is 0')).toBeInTheDocument();
+    expect(screen.getByText('The sum is 1')).toBeInTheDocument();
 
+    await user.click(screen.getAllByText(/increment/i)[1]);
+    await user.click(screen.getAllByText(/increment/i)[1]);
     await user.click(screen.getAllByText(/decrement/i)[0]);
+    expect(screen.getByText('The sum is 2')).toBeInTheDocument();
+
     await user.click(screen.getAllByText(/reset/i)[1]);
+    await user.click(screen.getAllByText(/decrement/i)[0]);
+
     expect(screen.getByText('The sum is 0')).toBeInTheDocument();
   });
 
@@ -62,9 +68,9 @@ describe('should handle sum', () => {
     expect(screen.getByText('The sum is 1')).toBeInTheDocument();
 
     await user.click(screen.getAllByText(/decrement/i)[1]);
-    expect(screen.getByText('The sum is 0')).toBeInTheDocument();
+    expect(screen.getByText('The sum is 1')).toBeInTheDocument();
 
     await user.click(screen.getAllByText(/remove/i)[0]);
-    expect(screen.getByText('The sum is -1')).toBeInTheDocument();
+    expect(screen.getByText('The sum is 0')).toBeInTheDocument();
   });
 });
